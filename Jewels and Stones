@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+         string str = jewels;
+         string str2 = stones;
+         int count = 0;
+ 
+    for(char c : str2){
+        size_t found = str.find(c);        
+        if (found != string::npos){
+            count++;
+        }
+    }
+
+    return count;
+
+    }
+};
