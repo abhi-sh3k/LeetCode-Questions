@@ -1,0 +1,24 @@
+class Solution {
+public:
+     int lengthOfLongestSubstring(string s) {
+        int maxLength = 0;
+        int left = 0;
+        int right = 0;
+        unordered_set<char> charSet;
+
+        while (right < s.length()) {
+            if (charSet.find(s[right]) == charSet.end()) {
+                // If the character is not in the set, add it and update the maxLength
+                charSet.insert(s[right]);
+                maxLength = max(maxLength, right - left + 1);
+                right++;
+            } else {
+                // If the character is in the set, remove the leftmost character and move the window
+                charSet.erase(s[left]);
+                left++;
+            }
+        }
+
+        return maxLength;
+    }
+};
